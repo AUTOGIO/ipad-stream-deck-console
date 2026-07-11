@@ -1,0 +1,120 @@
+{
+  "defaults": {
+    "chatgpt": "chatgpt_atlas",
+    "terminal": "ghostty",
+    "claude_code": "cursor_ai_engineering",
+    "finance_spreadsheet": "excel"
+  },
+  "apps": {
+    "chatgpt": {
+      "name": "ChatGPT",
+      "bundle_id": "com.openai.codex",
+      "path": "/Applications/ChatGPT.app"
+    },
+    "chatgpt_atlas": {
+      "name": "ChatGPT Atlas",
+      "bundle_id": "com.openai.atlas",
+      "path": "/Applications/ChatGPT Atlas.app"
+    },
+    "chatgpt_classic": {
+      "name": "ChatGPT Classic",
+      "bundle_id": "com.openai.chat",
+      "path": "/Applications/ChatGPT Classic.app"
+    },
+    "cursor": {
+      "name": "Cursor",
+      "bundle_id": "com.todesktop.230313mzl4w4u92",
+      "path": "/Applications/Cursor.app"
+    },
+    "obsidian": {
+      "name": "Obsidian",
+      "bundle_id": "md.obsidian",
+      "path": "/Applications/Obsidian.app"
+    },
+    "lm_studio": {
+      "name": "LM Studio",
+      "bundle_id": "ai.elementlabs.lmstudio",
+      "path": "/Applications/LM Studio.app"
+    },
+    "claude": {
+      "name": "Claude",
+      "bundle_id": "com.anthropic.claudefordesktop",
+      "path": "/Applications/Claude.app"
+    },
+    "codex_monitor": {
+      "name": "Codex Monitor",
+      "bundle_id": "com.dimillian.codexmonitor",
+      "path": "/Applications/Codex Monitor.app"
+    },
+    "activitywatch": {
+      "name": "ActivityWatch",
+      "bundle_id": "net.activitywatch.ActivityWatch",
+      "path": "/Applications/ActivityWatch.app"
+    },
+    "activity_monitor": {
+      "name": "Activity Monitor",
+      "bundle_id": "com.apple.ActivityMonitor",
+      "path": "/System/Applications/Utilities/Activity Monitor.app"
+    },
+    "raycast": {
+      "name": "Raycast",
+      "bundle_id": "com.raycast.macos",
+      "path": "/Applications/Raycast.app"
+    },
+    "ghostty": {
+      "name": "Ghostty",
+      "bundle_id": "com.mitchellh.ghostty",
+      "path": "/Applications/Ghostty.app"
+    },
+    "iterm": {
+      "name": "iTerm",
+      "bundle_id": "com.googlecode.iterm2",
+      "path": "/Applications/iTerm.app"
+    },
+    "terminal": {
+      "name": "Terminal",
+      "bundle_id": "com.apple.Terminal",
+      "path": "/System/Applications/Utilities/Terminal.app"
+    },
+    "hammerspoon": {
+      "name": "Hammerspoon",
+      "bundle_id": "org.hammerspoon.Hammerspoon",
+      "path": "/Applications/Hammerspoon.app"
+    },
+    "excel": {
+      "name": "Microsoft Excel",
+      "bundle_id": "com.microsoft.Excel",
+      "path": "/Applications/Microsoft Excel.app"
+    },
+    "numbers": {
+      "name": "Numbers",
+      "bundle_id": "com.apple.iWork.Numbers",
+      "path": "/Applications/Numbers.app"
+    },
+    "finder": {
+      "name": "Finder",
+      "bundle_id": "com.apple.finder",
+      "path": "/System/Library/CoreServices/Finder.app"
+    }
+  },
+  "claude_code_actions": {
+    "claude_desktop": {
+      "description": "Open Claude desktop app",
+      "app_key": "claude"
+    },
+    "cursor_ai_engineering": {
+      "description": "Open Cursor with AI_Engineering_OS project",
+      "app_key": "cursor",
+      "open_path_key": "ai_engineering_project"
+    },
+    "codex_monitor": {
+      "description": "Open Codex Monitor app",
+      "app_key": "codex_monitor"
+    },
+    "codex_cli": {
+      "description": "Open terminal and run codex CLI",
+      "terminal_key": "terminal",
+      "command": "codex"
+    }
+  }
+}

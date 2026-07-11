@@ -1,0 +1,62 @@
+{
+  "profile_name": "iPad Console",
+  "folders": [
+    {
+      "id": "ai",
+      "name": "AI",
+      "buttons": [
+        { "id": "open_chatgpt", "label": "ChatGPT", "script": "scripts/launch/open-chatgpt.zsh" },
+        { "id": "open_claude_code", "label": "Claude Code", "script": "scripts/launch/open-claude-code.zsh" },
+        { "id": "open_cursor", "label": "Cursor", "script": "scripts/launch/open-cursor.zsh" },
+        { "id": "open_lm_studio", "label": "LM Studio", "script": "scripts/launch/open-lm-studio.zsh" },
+        { "id": "open_obsidian_ai", "label": "Obsidian AI", "script": "scripts/launch/open-obsidian-ai.zsh" }
+      ]
+    },
+    {
+      "id": "macos",
+      "name": "macOS",
+      "buttons": [
+        { "id": "open_terminal", "label": "Terminal", "script": "scripts/launch/open-terminal.zsh" },
+        { "id": "open_finder_home", "label": "Home", "script": "scripts/launch/open-finder-home.zsh" },
+        { "id": "health_check", "label": "Health Check", "script": "scripts/system/health-check.zsh" },
+        { "id": "open_activity_monitor", "label": "Activity Mon", "script": "scripts/launch/open-activity-monitor.zsh" },
+        { "id": "open_activitywatch", "label": "ActivityWatch", "script": "scripts/launch/open-activitywatch.zsh" }
+      ]
+    },
+    {
+      "id": "projects",
+      "name": "Projects",
+      "buttons": [
+        { "id": "open_github_projects", "label": "GitHub Dir", "script": "scripts/launch/open-github-projects.zsh" },
+        { "id": "project_selector", "label": "Pick Project", "applescript": "applescript/project-selector.applescript" }
+      ]
+    },
+    {
+      "id": "audio",
+      "name": "Audio",
+      "buttons": [],
+      "placeholder": true
+    },
+    {
+      "id": "home",
+      "name": "Home",
+      "buttons": [],
+      "placeholder": true
+    },
+    {
+      "id": "workspace",
+      "name": "Workspace",
+      "buttons": [
+        { "id": "ai_engineering_workspace", "label": "AI Eng", "script": "scripts/workspace/ai-engineering.zsh" },
+        { "id": "finance_workspace", "label": "Finance", "script": "scripts/workspace/finance.zsh" }
+      ]
+    },
+    {
+      "id": "safety",
+      "name": "Safety",
+      "buttons": [
+        { "id": "collect_diagnostics", "label": "Diagnostics", "script": "scripts/system/collect-diagnostics.zsh" }
+      ]
+    }
+  ]
+}

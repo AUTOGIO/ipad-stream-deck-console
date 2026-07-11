@@ -1,0 +1,15 @@
+{
+  "home": "/Users/eduardofgiovannini",
+  "projects_root": "/Users/eduardofgiovannini/Documents/GitHub",
+  "ai_engineering_project": "/Users/eduardofgiovannini/Documents/GitHub/AI_Engineering_OS",
+  "finance_project": "/Users/eduardofgiovannini/Desktop/00_Launchers/PersonalFinance",
+  "obsidian_vaults_root": "/Users/eduardofgiovannini/Documents/OBSIDIAN_VAULTS",
+  "obsidian_ai_vault": "/Users/eduardofgiovannini/Documents/OBSIDIAN_VAULTS/System Organizer",
+  "obsidian_ai_vault_name": "System Organizer",
+  "hammerspoon_config": "/Users/eduardofgiovannini/.hammerspoon",
+  "logs_dir": "/Users/eduardofgiovannini/Documents/GitHub/ipad-stream-deck-console/logs",
+  "reports_dir": "/Users/eduardofgiovannini/Documents/GitHub/ipad-stream-deck-console/reports",
+  "backups_dir": "/Users/eduardofgiovannini/Documents/GitHub/ipad-stream-deck-console/backups",
+  "codex_cli": "/opt/homebrew/bin/codex",
+  "ollama_cli": "/opt/homebrew/bin/ollama"
+}

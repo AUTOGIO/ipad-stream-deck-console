@@ -1,0 +1,10 @@
+logs/*
+!logs/.gitkeep
+reports/*
+!reports/.gitkeep
+backups/*
+!backups/.gitkeep
+.DS_Store
+*.zip
+*.tar.gz
+stream-deck/profiles/*.streamDeckProfile
