@@ -7,4 +7,6 @@ backups/*
 .DS_Store
 *.zip
 *.tar.gz
+.superpowers/
 stream-deck/profiles/*.streamDeckProfile
+stream-deck/generated/
