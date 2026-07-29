@@ -1,23 +1,23 @@
 # iPad Stream Deck Console
 
-Turn an iPad running **Stream Deck Mobile** into a reliable control surface for Mac workflows.
+Turn an iPad running **Stream Deck Mobile** (and/or a physical Stream Deck) into a Mac control surface.
 
 ## Objective
 
-The iPad is the control surface. The Mac executes workflows through thin actions (Shortcuts, AppleScript, or zsh scripts) stored in this repository.
+The iPad/deck is the control surface. The Mac executes workflows through thin Open actions that run zsh scripts in this repository.
 
 ## Architecture
 
 ```
-iPad Stream Deck Mobile
+iPad / Physical Stream Deck
         ↓
 Elgato Stream Deck (macOS)
         ↓
-Thin button action (Open / Shortcut / AppleScript / Shell)
+Thin button action (Open .command / hammerspoon:// / Shortcut)
         ↓
 Script in ipad-stream-deck-console
         ↓
-Actual workflow (launch app, open folder, report, etc.)
+Actual workflow (launch app, layout, session ops, etc.)
 ```
 
 Complex logic lives in reusable scripts — not inside Stream Deck button definitions.
@@ -25,142 +25,100 @@ Complex logic lives in reusable scripts — not inside Stream Deck button defini
 ## Prerequisites
 
 - macOS on Apple Silicon
-- [Elgato Stream Deck](https://www.elgato.com/downloads) for macOS (GATE 5)
-- [Stream Deck Mobile](https://apps.apple.com/app/stream-deck-mobile/id1476615877) on iPad (GATE 5)
+- [Elgato Stream Deck](https://www.elgato.com/downloads) for macOS 7.5+
+- [Stream Deck Mobile](https://apps.apple.com/app/stream-deck-mobile/id1476615877) on iPad
 - Mac and iPad on the same Wi-Fi network
 - zsh (default on modern macOS)
+- Hammerspoon (window layouts)
 
 ## Installation
 
-1. Clone or copy this project to:
+1. Clone or copy this project to `~/Documents/GitHub/ipad-stream-deck-console`.
 
-   `/Users/eduardofgiovannini/Documents/GitHub/ipad-stream-deck-console`
-
-2. Validate configuration:
+2. Bootstrap config if needed:
 
    ```zsh
-   zsh /Users/eduardofgiovannini/Documents/GitHub/ipad-stream-deck-console/tests/validate-config.zsh
+   cp config/config.example.json config/config.json
+   # Replace YOUR_USERNAME and project paths
    ```
 
-3. Make scripts executable:
+3. Validate:
 
    ```zsh
-   chmod +x /Users/eduardofgiovannini/Documents/GitHub/ipad-stream-deck-console/scripts/**/*.zsh
-   chmod +x /Users/eduardofgiovannini/Documents/GitHub/ipad-stream-deck-console/tests/*.zsh
+   zsh tests/validate-config.zsh
+   chmod +x scripts/**/*.zsh tests/*.zsh
    ```
 
-4. Install Stream Deck on macOS from [Elgato Downloads](https://www.elgato.com/downloads) and pair the iPad (see `stream-deck/documentation/ipad-pairing-checklist.md`).
+4. Install Stream Deck + Hammerspoon; pair the iPad ([pairing checklist](stream-deck/documentation/ipad-pairing-checklist.md)).
 
-   Stream Deck Mobile (iPad): [App Store](https://apps.apple.com/app/stream-deck-mobile/id1476615877)
+5. Backup, then build the primary Mobile profile:
 
-## iPad Pairing
+   ```zsh
+   zsh stream-deck/documentation/backup-stream-deck-config.zsh
+   python3 scripts/stream-deck/build-profile.py --profile ipad-work
+   ```
 
-See [stream-deck/documentation/ipad-pairing-checklist.md](stream-deck/documentation/ipad-pairing-checklist.md).
+Full install notes: [INSTALLATION.md](stream-deck/documentation/INSTALLATION.md).
 
-## Profile Structure
+## Profiles
 
-Six primary folders plus Safety:
+| Profile | Device | Role |
+|---------|--------|------|
+| **iPad Work Console** | Stream Deck Mobile | **Primary** — 8×4 · 2 pages (WORK + TOOLS) |
+| **Operations Console** | Physical / hybrid | Physical deck layout |
+| **iPad Console** | Stream Deck Mobile | Legacy folder layout — **rollback only** |
 
-| Folder | Purpose |
-|--------|---------|
-| AI | ChatGPT, Claude Code, Cursor, LM Studio, Obsidian |
-| macOS | Terminal, Finder, health check, Activity Monitor, ActivityWatch |
-| Projects | GitHub directory, project selector |
-| Audio | Placeholder (Phase 2) |
-| Home | Placeholder (Phase 2) |
-| Workspace | AI Engineering, Finance workspaces |
-| Safety | Collect diagnostics |
-
-Button wiring details: [stream-deck/documentation/button-wiring.md](stream-deck/documentation/button-wiring.md).
-
-## Button Inventory
-
-| # | Folder | Label | Script |
-|---|--------|-------|--------|
-| 1 | AI | ChatGPT | `scripts/launch/open-chatgpt.zsh` |
-| 2 | AI | Claude Code | `scripts/launch/open-claude-code.zsh` |
-| 3 | AI | Cursor | `scripts/launch/open-cursor.zsh` |
-| 4 | AI | LM Studio | `scripts/launch/open-lm-studio.zsh` |
-| 5 | AI | Obsidian AI | `scripts/launch/open-obsidian-ai.zsh` |
-| 6 | macOS | Terminal | `scripts/launch/open-terminal.zsh` |
-| 7 | macOS | Home | `scripts/launch/open-finder-home.zsh` |
-| 8 | macOS | Health Check | `scripts/system/health-check.zsh` |
-| 9 | macOS | Activity Mon | `scripts/launch/open-activity-monitor.zsh` |
-| 10 | macOS | ActivityWatch | `scripts/launch/open-activitywatch.zsh` |
-| 11 | Projects | GitHub Dir | `scripts/launch/open-github-projects.zsh` |
-| 12 | Projects | Pick Project | `applescript/project-selector.applescript` |
-| 13 | Workspace | AI Eng | `scripts/workspace/ai-engineering.zsh` |
-| 14 | Workspace | Finance | `scripts/workspace/finance.zsh` |
-| 15 | Safety | Diagnostics | `scripts/system/collect-diagnostics.zsh` |
+Canonical inventory: [ACTION-MAP.md](stream-deck/documentation/ACTION-MAP.md). Live ops: [STATUS.md](STATUS.md).
 
 ## Configuration
 
-Edit these files — never hardcode paths in multiple scripts:
+| File | Role |
+|------|------|
+| `config/config.json` | Runtime paths, projects, session/focus/ai (from `config.example.json` if missing) |
+| `config/apps.json` | App catalog + `defaults.*` |
+| `config/paths.json` | Legacy path shim — `sd_load_path` prefers `config.json` `paths.*` |
+| `config/profiles-ipad-work.json` | Primary Mobile button metadata |
+| `config/profiles-physical.json` | Physical / hybrid layout |
+| `config/profiles.json` | Legacy Mobile folders |
 
-- `config/apps.json` — application names, bundle IDs, paths, defaults
-- `config/paths.json` — canonical filesystem paths
-- `config/profiles.json` — button metadata for Stream Deck setup
+### Defaults (`config/apps.json`)
 
-### Defaults (change in `config/apps.json`)
-
-| Key | Current value | Purpose |
-|-----|---------------|---------|
-| `chatgpt` | `chatgpt_atlas` | Which ChatGPT app to open |
-| `terminal` | `ghostty` | Default terminal |
-| `claude_code` | `cursor_ai_engineering` | Claude Code button behavior |
-| `finance_spreadsheet` | `excel` | Finance workspace spreadsheet |
+Confirm current values in the file. Common keys: `chatgpt`, `terminal`, `claude_code`, `finance_spreadsheet`.
 
 ## Script Execution
 
-All scripts use shared libraries in `scripts/lib/`:
-
 ```zsh
-zsh /Users/eduardofgiovannini/Documents/GitHub/ipad-stream-deck-console/scripts/launch/open-cursor.zsh
+zsh scripts/launch/open-cursor.zsh
 ```
 
-Logs are written to `logs/ipad-stream-deck-console.log`.
-
-## Logs
-
-- Runtime log: `logs/ipad-stream-deck-console.log`
-- Health reports: `reports/health-check_YYYY-MM-DD_HH-MM-SS.txt`
-- Diagnostics archives: `reports/diagnostics_YYYY-MM-DD_HH-MM-SS.zip`
+Runtime logs: `~/Library/Logs/AUTOGIO/StreamDeck/ipad-stream-deck-console.log`  
+Health/diagnostics: `reports/`
 
 ## Troubleshooting
 
 | Problem | Fix |
 |---------|-----|
-| Button does nothing | Run the script directly in Terminal; check `logs/` |
-| App not found | Run `tests/validate-config.zsh`; update `config/apps.json` |
-| iPad won't connect | Same Wi-Fi, Stream Deck running, allow local network |
-| Firewall blocks pairing | System Settings → Network → Firewall → allow Stream Deck |
-| Wrong ChatGPT opens | Change `defaults.chatgpt` in `config/apps.json` |
+| Button does nothing | Rebuild profile; Open `.command` launchers, not raw `.zsh` |
+| App not found | `tests/validate-config.zsh`; fix `apps.json` / `config.json` |
+| iPad won't connect | Same Wi-Fi; allow Local Network for Stream Deck |
+| Wrong ChatGPT opens | Change `defaults.chatgpt` in `apps.json` |
+| Start My Day blocked | Remove stale `~/.autogio/streamdeck/start-my-day.lockdir` |
 
 ## Backup and Restore
 
-Before changing Stream Deck profiles:
+```zsh
+zsh stream-deck/documentation/backup-stream-deck-config.zsh
+```
 
-1. Back up Elgato config (see `stream-deck/documentation/backup-restore.md`)
-2. Store backups in `backups/` (not committed to Git)
+Backups land in `backups/` (gitignored). Rollback: [ROLLBACK.md](stream-deck/documentation/ROLLBACK.md).
 
-## Uninstallation
+## Policy notes
 
-1. Remove Stream Deck profile buttons pointing to this project
-2. Delete or archive `~/Documents/GitHub/ipad-stream-deck-console`
-3. Uninstall Stream Deck apps if no longer needed
+- Cloud LLMs only (no LM Studio / Ollama)
+- Git commit/push from the deck requires interactive confirmation; push is opt-in
+- End Session may quit configured work apps when `session.quit_apps` is true
+- File watcher (optional) watches `~/Reports` only
 
-## Known Limitations
+## Agents
 
-- Phase 1 launches apps only — no window positioning
-- Stream Deck macOS must be installed for iPad pairing
-- Hammerspoon integration deferred to Phase 2
-- Audio and Home folders are placeholders
-- Diagnostics require user confirmation before archiving
-
-## Future Improvements
-
-- Window positioning via Hammerspoon
-- Stream Deck status feedback
-- Home Assistant and Wave Link controls
-- Dynamic button states
-- Context-aware profile switching
+See [AGENTS.md](AGENTS.md) for durable agent policy and [STATUS.md](STATUS.md) for pending ops.

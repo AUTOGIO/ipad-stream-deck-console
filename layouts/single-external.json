@@ -1,0 +1,11 @@
+{
+  "mode": "single_external",
+  "description": "AG493QS4R4 Command Center: Atlas, Cursor, Ghostty, and Notes rail",
+  "hammerspoon_layout": "command_center",
+  "windows": [
+    { "app": "ChatGPT Atlas", "zone": "left15" },
+    { "app": "Cursor", "zone": "center42" },
+    { "app": "Ghostty", "zone": "right28", "fallback": "Terminal" },
+    { "app": "Notes", "zone": "right15" }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "profile_name": "Operations Console",
+  "grid": {
+    "columns": 8,
+    "rows": 8
+  },
+  "home_page": [
+    {
+      "position": 1,
+      "col": 0,
+      "row": 0,
+      "label": "START\nMY DAY",
+      "script": "scripts/workspace/start-my-day.zsh"
+    },
+    {
+      "position": 2,
+      "col": 1,
+      "row": 0,
+      "label": "Cursor",
+      "script": "scripts/launch/open-cursor.zsh"
+    },
+    {
+      "position": 3,
+      "col": 2,
+      "row": 0,
+      "label": "ChatGPT",
+      "script": "scripts/launch/open-chatgpt.zsh"
+    },
+    {
+      "position": 4,
+      "col": 3,
+      "row": 0,
+      "label": "Claude",
+      "script": "scripts/launch/open-claude.zsh"
+    },
+    {
+      "position": 5,
+      "col": 4,
+      "row": 0,
+      "label": "Atlas",
+      "script": "scripts/launch/open-chatgpt-atlas.zsh"
+    },
+    {
+      "position": 6,
+      "col": 5,
+      "row": 0,
+      "label": "iTerm",
+      "script": "scripts/launch/open-terminal.zsh"
+    },
+    {
+      "position": 7,
+      "col": 6,
+      "row": 0,
+      "label": "Notes",
+      "script": "scripts/launch/open-notes.zsh"
+    },
+    {
+      "position": 8,
+      "col": 7,
+      "row": 0,
+      "label": "Codex",
+      "script": "scripts/launch/open-codex.zsh"
+    },
+    {
+      "position": 9,
+      "col": 0,
+      "row": 1,
+      "label": "Dev\nSpace",
+      "script": "scripts/workspace/development-workspace.zsh"
+    },
+    {
+      "position": 10,
+      "col": 1,
+      "row": 1,
+      "label": "AI\nSpace",
+      "script": "scripts/workspace/ai-engineering.zsh"
+    },
+    {
+      "position": 11,
+      "col": 2,
+      "row": 1,
+      "label": "Thinking",
+      "script": "scripts/workspace/thinking-workspace.zsh"
+    },
+    {
+      "position": 24,
+      "col": 7,
+      "row": 2,
+      "label": "GitHub",
+      "script": "scripts/launch/open-github-projects.zsh"
+    },
+    {
+      "position": 12,
+      "col": 3,
+      "row": 1,
+      "label": "Health",
+      "script": "scripts/system/health-check.zsh"
+    },
+    {
+      "position": 13,
+      "col": 4,
+      "row": 1,
+      "label": "RESET\nLAYOUT",
+      "script": "scripts/workspace/reset-daily-layout.zsh"
+    },
+    {
+      "position": 14,
+      "col": 5,
+      "row": 1,
+      "label": "Hammerspoon",
+      "script": "scripts/projects/open-project.zsh",
+      "args": [
+        "hammerspoon"
+      ]
+    },
+    {
+      "position": 15,
+      "col": 6,
+      "row": 1,
+      "label": "Status",
+      "script": "scripts/system/status-snapshot.zsh"
+    },
+    {
+      "position": 17,
+      "col": 0,
+      "row": 2,
+      "label": "AI",
+      "folder": "ai"
+    },
+    {
+      "position": 18,
+      "col": 1,
+      "row": 2,
+      "label": "Dev",
+      "folder": "development"
+    },
+    {
+      "position": 19,
+      "col": 2,
+      "row": 2,
+      "label": "Projects",
+      "folder": "projects"
+    },
+    {
+      "position": 20,
+      "col": 3,
+      "row": 2,
+      "label": "Research",
+      "folder": "research"
+    },
+    {
+      "position": 21,
+      "col": 4,
+      "row": 2,
+      "label": "macOS",
+      "folder": "macos"
+    },
+    {
+      "position": 22,
+      "col": 5,
+      "row": 2,
+      "label": "System",
+      "folder": "system"
+    },
+    {
+      "position": 23,
+      "col": 6,
+      "row": 2,
+      "label": "Prompts",
+      "folder": "prompts"
+    }
+  ],
+  "folders": {
+    "ai": {
+      "name": "AI",
+      "buttons": [
+        {
+          "label": "Gemini",
+          "script": "scripts/launch/open-gemini.zsh"
+        },
+        {
+          "label": "Grok",
+          "url": "https://grok.com"
+        },
+        {
+          "label": "Perplexity",
+          "url": "https://www.perplexity.ai"
+        },
+        {
+          "label": "ChatGPT",
+          "script": "scripts/launch/open-chatgpt.zsh"
+        },
+        {
+          "label": "Atlas",
+          "script": "scripts/launch/open-chatgpt-atlas.zsh"
+        },
+        {
+          "label": "Codex",
+          "script": "scripts/launch/open-codex.zsh"
+        },
+        {
+          "label": "Term Ops",
+          "hammerspoon": "launch_terminal_ops"
+        },
+        {
+          "label": "AI Layout",
+          "hammerspoon": "apply_ai_layout"
+        }
+      ]
+    },
+    "development": {
+      "name": "Development",
+      "buttons": [
+        {
+          "label": "Ghostty",
+          "script": "scripts/launch/open-ghostty.zsh"
+        },
+        {
+          "label": "Commit",
+          "script": "scripts/git/commit-push.zsh"
+        },
+        {
+          "label": "Pull",
+          "script": "scripts/git/pull-latest.zsh"
+        },
+        {
+          "label": "Dev Space",
+          "script": "scripts/workspace/development-workspace.zsh"
+        },
+        {
+          "label": "Dev Layout",
+          "hammerspoon": "apply_coding_layout"
+        },
+        {
+          "label": "Codex",
+          "script": "scripts/launch/open-codex.zsh"
+        },
+        {
+          "label": "Claude",
+          "script": "scripts/launch/open-claude.zsh"
+        },
+        {
+          "label": "Console",
+          "hammerspoon": "apply_dev_console_layout"
+        }
+      ]
+    },
+    "projects": {
+      "name": "Projects",
+      "buttons": [
+        {
+          "label": "AUTOGIO",
+          "script": "scripts/projects/open-project.zsh",
+          "args": [
+            "AI_Engineering_OS"
+          ]
+        },
+        {
+          "label": "Finance",
+          "script": "scripts/projects/open-project.zsh",
+          "args": [
+            "financas-2026"
+          ]
+        },
+        {
+          "label": "Activity",
+          "script": "scripts/projects/open-project.zsh",
+          "args": [
+            "WorkflowSuggesterPro"
+          ]
+        },
+        {
+          "label": "MacHealth",
+          "script": "scripts/projects/open-project.zsh",
+          "args": [
+            "MacHealthOS"
+          ]
+        },
+        {
+          "label": "LifeOS",
+          "script": "scripts/projects/open-project.zsh",
+          "args": [
+            "PersonalLifeOS"
+          ]
+        },
+        {
+          "label": "StreamDeck",
+          "script": "scripts/projects/open-project.zsh",
+          "args": [
+            "ipad-stream-deck-console"
+          ]
+        },
+        {
+          "label": "Hammerspoon",
+          "script": "scripts/projects/open-project.zsh",
+          "args": [
+            "hammerspoon"
+          ]
+        },
+        {
+          "label": "Pick",
+          "applescript": "applescript/project-selector.applescript"
+        }
+      ]
+    },
+    "research": {
+      "name": "Research",
+      "buttons": [
+        {
+          "label": "Research",
+          "script": "scripts/workspace/research-workspace.zsh"
+        },
+        {
+          "label": "Focus",
+          "script": "scripts/workspace/focus-session.zsh"
+        },
+        {
+          "label": "Meetings",
+          "script": "scripts/workspace/meetings-workspace.zsh"
+        },
+        {
+          "label": "Finance",
+          "script": "scripts/workspace/finance.zsh"
+        },
+        {
+          "label": "Notes",
+          "script": "scripts/launch/open-notes.zsh"
+        },
+        {
+          "label": "ActivityWatch",
+          "script": "scripts/launch/open-activitywatch.zsh"
+        },
+        {
+          "label": "Writing",
+          "hammerspoon": "apply_writing_layout"
+        }
+      ]
+    },
+    "macos": {
+      "name": "macOS",
+      "buttons": [
+        {
+          "label": "Finder",
+          "script": "scripts/launch/open-finder-home.zsh"
+        },
+        {
+          "label": "Calendar",
+          "app_key": "calendar"
+        },
+        {
+          "label": "Mail",
+          "app_key": "mail"
+        },
+        {
+          "label": "Sound",
+          "path": "/System/Applications/System Settings.app"
+        },
+        {
+          "label": "Audio",
+          "folder": "audio"
+        },
+        {
+          "label": "Clipboard",
+          "guide": "clipboard"
+        },
+        {
+          "label": "HS Guide",
+          "hammerspoon": "open_guide"
+        },
+        {
+          "label": "Reload HS",
+          "hammerspoon": "reload_hammerspoon"
+        }
+      ]
+    },
+    "system": {
+      "name": "System",
+      "buttons": [
+        {
+          "label": "Health",
+          "script": "scripts/system/health-check.zsh"
+        },
+        {
+          "label": "Status",
+          "script": "scripts/system/status-snapshot.zsh"
+        },
+        {
+          "label": "Refresh",
+          "hammerspoon": "refresh_status"
+        },
+        {
+          "label": "Verify",
+          "hammerspoon": "run_verification"
+        },
+        {
+          "label": "Diag",
+          "script": "scripts/system/collect-diagnostics.zsh"
+        },
+        {
+          "label": "Copy Diag",
+          "hammerspoon": "copy_diagnostics"
+        },
+        {
+          "label": "Activity",
+          "script": "scripts/launch/open-activity-monitor.zsh"
+        },
+        {
+          "label": "Term Ops",
+          "hammerspoon": "launch_terminal_ops"
+        }
+      ]
+    },
+    "prompts": {
+      "name": "Prompts",
+      "buttons": [
+        {
+          "label": "Explain",
+          "script": "scripts/hammerspoon/ai-prompt.zsh",
+          "args": [
+            "explain"
+          ]
+        },
+        {
+          "label": "Review",
+          "script": "scripts/hammerspoon/ai-prompt.zsh",
+          "args": [
+            "codex"
+          ]
+        },
+        {
+          "label": "Snapshot",
+          "script": "scripts/hammerspoon/ai-prompt.zsh",
+          "args": [
+            "snapshot"
+          ]
+        },
+        {
+          "label": "Deliver",
+          "script": "scripts/hammerspoon/ai-prompt.zsh",
+          "args": [
+            "deliver"
+          ]
+        },
+        {
+          "label": "Compare",
+          "script": "scripts/hammerspoon/ai-prompt.zsh",
+          "args": [
+            "compare"
+          ]
+        },
+        {
+          "label": "Structured",
+          "script": "scripts/hammerspoon/ai-prompt.zsh",
+          "args": [
+            "structured"
+          ]
+        },
+        {
+          "label": "Summary",
+          "script": "scripts/hammerspoon/ai-prompt.zsh",
+          "args": [
+            "summary"
+          ]
+        },
+        {
+          "label": "Quick",
+          "script": "scripts/hammerspoon/ai-prompt.zsh",
+          "args": [
+            "quick"
+          ]
+        }
+      ]
+    },
+    "audio": {
+      "name": "Audio",
+      "buttons": [
+        {
+          "label": "Sound",
+          "path": "/System/Applications/System Settings.app"
+        },
+        {
+          "label": "Switcher",
+          "path": "/Applications/AudioSwitcher.app"
+        }
+      ]
+    }
+  }
+}

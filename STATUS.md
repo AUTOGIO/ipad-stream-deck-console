@@ -1,76 +1,55 @@
 # STATUS
 
-Last updated: 2026-07-11
+Last updated: 2026-07-29 (audit remediation)
 
 ## Discovery Status
 
 - **Machine:** MacBook Air M4, macOS 27.0, 16 GB RAM
-- **Stream Deck macOS:** Not installed (user step for GATE 5)
-- **iPad pairing:** Not verified — requires Stream Deck install
+- **Stream Deck macOS:** Installed at `/Applications/Elgato Stream Deck.app`
+- **Stream Deck version:** 7.5.0.22885
 - **Project directory:** `~/Documents/GitHub/ipad-stream-deck-console`
+- **Runtime:** `~/Library/Application Support/AUTOGIO/streamdeck/`
+- **Logs:** `~/Library/Logs/AUTOGIO/StreamDeck/`
+- **Git remote:** **None configured yet** — add a private `origin` when ready (do not push `backups/` or secrets)
 
-## Implementation Status
+## LLM policy
 
-| Gate | Status | Notes |
-|------|--------|-------|
-| GATE 1 Discovery | Complete | Read-only inventory |
-| GATE 2 Foundation | Complete | Config, libs, validation, docs |
-| GATE 3 First five | Complete | 10 launch scripts tested |
-| GATE 4 MVP scripts | Complete | Health, workspaces, selector, diagnostics, icons |
-| GATE 5 Stream Deck | Ready for user | Docs + backup script; install Stream Deck to finish |
+**Cloud APIs only.** ChatGPT, Atlas, Claude, Codex, Gemini, and Perplexity.
+Local runtimes **LM Studio** and **Ollama** are removed. **Grok is omitted from iPad Work Console.**
 
-## Tested Actions
+## Stream Deck Profile
 
-| Action | Result |
-|--------|--------|
-| validate-config.zsh | PASS (35 checks, 0 errors) |
-| test-launchers.zsh | PASS (10/10) |
-| test-health-check.zsh | PASS |
-| open-cursor.zsh | PASS |
-| open-lm-studio.zsh | PASS |
-| open-activitywatch.zsh | PASS |
-| open-finder-home.zsh | PASS |
-| open-github-projects.zsh | PASS |
-| open-chatgpt.zsh | PASS |
-| open-claude-code.zsh | PASS |
-| open-obsidian-ai.zsh | PASS |
-| open-terminal.zsh | PASS |
-| open-activity-monitor.zsh | PASS |
-| health-check.zsh | PASS |
-| ai-engineering.zsh | Implemented |
-| finance.zsh | Implemented |
-| collect-diagnostics.zsh | Implemented (interactive confirm) |
-| project-selector.applescript | Implemented |
+| Profile | Device | Layout |
+|---------|--------|--------|
+| **iPad Work Console** | Stream Deck Mobile | **8×4 · 2 pages** (WORK + TOOLS) — primary |
+| **iPad Console** | Stream Deck Mobile | Legacy folder layout — rollback only |
+| **Operations Console** | Physical / hybrid | hybrid folder layout |
 
-## Configuration Defaults
+Config source for primary mobile: `config/profiles-ipad-work.json`  
+Build: `python3 scripts/stream-deck/build-profile.py --profile ipad-work`
 
-| Setting | Value | Change in |
-|---------|-------|-----------|
-| ChatGPT app | ChatGPT Atlas | `config/apps.json` → `defaults.chatgpt` |
-| Terminal | Ghostty | `config/apps.json` → `defaults.terminal` |
-| Claude Code | Cursor + AI_Engineering_OS | `config/apps.json` → `defaults.claude_code` |
-| Finance spreadsheet | Excel | `config/apps.json` → `defaults.finance_spreadsheet` |
-| Obsidian vault | System Organizer | `config/paths.json` |
+## Ultrawide Command Center
 
-## Failed Actions
+For the 3840×1080 AG493QS4R4, Command Center is the default work layout:
 
-None.
+- 15% ChatGPT Atlas · 42% Cursor · 28% Ghostty · 15% Apple Notes
+- The Notes rail opens the native `AUTOGIO/Command Center Inbox` note.
+- START MY DAY opens the active Cursor project, Atlas, Ghostty at that project root, and the capture note.
+- END SESSION keeps a plain-language personal journal in `~/Reports/WorkSessions`; it uses the open Cursor workspace when unambiguous, writes its generated snapshot to that project's `reports/session/` directory, then requests a normal quit for Cursor, Atlas, Ghostty, and Notes when `session.quit_apps` is true. Unsaved-work prompts remain under each app's control.
+- Optional file watcher notifies for changes under **`~/Reports` only** (not `~/Documents`).
 
-## Pending User Steps (GATE 5)
+## Verified notes (2026-07-29)
 
-1. Install **Elgato Stream Deck** — https://www.elgato.com/downloads
-2. Install **Stream Deck Mobile** on iPad — App Store
-3. Run `stream-deck/documentation/backup-stream-deck-config.zsh` after install
-4. Create profile per `stream-deck/documentation/profile-setup.md`
-5. Pair iPad per `stream-deck/documentation/ipad-pairing-checklist.md`
-6. Run acceptance tests per `stream-deck/documentation/acceptance-tests.md`
+- ChatGPT.app bundle ID on this Mac is `com.openai.codex` (confirmed via `mdls`) — `apps.json` is correct.
+- Clone bootstrap: copy `config/config.example.json` → `config/config.json` and edit paths.
 
-## Known Risks
+## Pending User Steps
 
-- macOS 27 beta may affect Stream Deck compatibility
-- Firewall enabled — allow Stream Deck local network access
-- 16 GB RAM — workspace buttons launch multiple heavy apps
+1. In Stream Deck macOS → Profiles → **Stream Deck Mobile** → select **iPad Work Console**.
+2. On iPad: confirm pages **WORK** and **TOOLS** are visible.
+3. Spot-check: START MY DAY, NOTES, FOCUS SESSION, RESET, and CURRENT PROJECT.
+4. When ready: add a private Git remote for offsite backup of this repo.
 
 ## Next Recommended Action
 
-Install Stream Deck from [Elgato Downloads](https://www.elgato.com/downloads), then follow `stream-deck/documentation/profile-setup.md`.
+Select **iPad Work Console** on Mobile and verify the four-panel Command Center on the ultrawide.

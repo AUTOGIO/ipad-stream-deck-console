@@ -2,24 +2,26 @@
 
 ## Mac Steps (Agent / User)
 
-- [ ] Install **Elgato Stream Deck** for macOS from [Elgato Downloads](https://www.elgato.com/downloads) (filter: Stream Deck → mac)
-- [ ] Alternative regional page: [Elgato Downloads PT](https://www.elgato.com/lm/pt/s/downloads)
-- [ ] Launch Stream Deck on Mac
-- [ ] Grant **Local Network** permission when macOS prompts
+- [x] Install **Elgato Stream Deck** for macOS from [Elgato Downloads](https://www.elgato.com/downloads) (filter: Stream Deck → mac)
+- [x] Launch Stream Deck on Mac
+- [x] Grant **Local Network** permission when macOS prompts
 - [ ] If firewall blocks pairing: System Settings → Network → Firewall → Options → allow Stream Deck
-- [ ] Create or import the **iPad Console** profile (see `button-wiring.md`)
-- [ ] Wire all 15 buttons to scripts/apps
+- [x] Create or import the **iPad Work Console** profile (`python3 scripts/stream-deck/build-profile.py --profile ipad-work`)
+- [x] Wire all buttons via profile builder
+- [x] Prune duplicate profile entries if menu shows repeated names (`python3 scripts/stream-deck/prune-duplicate-profiles.py`)
 - [ ] Test one button from Mac Stream Deck app first
+
+Legacy rollback only: `python3 scripts/stream-deck/build-profile.py --profile mobile` builds **iPad Console** (folder layout).
 
 ## iPad Steps (User Only)
 
 - [ ] Install **Stream Deck Mobile** from the App Store
-- [ ] Connect iPad to the **same Wi-Fi** as the Mac (`192.168.0.x` network)
+- [ ] Connect iPad to the **same Wi-Fi** as the Mac
 - [ ] Open Stream Deck Mobile
-- [ ] Tap **Connect** and select your Mac (Eduardo's MacBook Air)
+- [ ] Tap **Connect** and select your Mac
 - [ ] Confirm pairing code matches on both devices
-- [ ] Select the **iPad Console** profile
-- [ ] Test one button (e.g. Cursor or Health Check)
+- [ ] Select the **iPad Work Console** profile (pages **WORK** + **TOOLS**)
+- [ ] Test one button (e.g. START MY DAY, Cursor, or Health Check)
 
 ## Reconnection Tests
 
@@ -43,5 +45,7 @@ After initial pairing, verify recovery from:
 
 ## Verification Status
 
-- Stream Deck macOS: **Not installed** (as of project creation)
-- iPad pairing: **Not verified** — complete this checklist at GATE 5
+- Stream Deck macOS: **Installed** (v7.5.0) — listening on port 28198
+- Primary Mobile profile: **iPad Work Console** (`config/profiles-ipad-work.json`)
+- Legacy **iPad Console**: keep for rollback only
+- iPad pairing: confirm WORK/TOOLS pages after selecting Work Console

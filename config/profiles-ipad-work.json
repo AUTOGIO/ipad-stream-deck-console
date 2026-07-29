@@ -1,0 +1,87 @@
+{
+  "profile_name": "iPad Work Console",
+  "grid": {
+    "columns": 8,
+    "rows": 4
+  },
+  "pages": [
+    {
+      "name": "WORK",
+      "buttons": [
+        {"col": 0, "row": 0, "label": "START\nMY DAY", "script": "scripts/workspace/start-my-day.zsh"},
+        {"col": 1, "row": 0, "label": "ChatGPT", "script": "scripts/launch/open-chatgpt.zsh"},
+        {"col": 2, "row": 0, "label": "Atlas", "script": "scripts/launch/open-chatgpt-atlas.zsh"},
+        {"col": 3, "row": 0, "label": "Claude", "script": "scripts/launch/open-claude.zsh"},
+        {"col": 4, "row": 0, "label": "Codex", "script": "scripts/launch/open-codex.zsh"},
+        {"col": 5, "row": 0, "label": "Cursor", "script": "scripts/launch/open-cursor.zsh"},
+        {"col": 6, "row": 0, "label": "iTerm", "script": "scripts/launch/open-terminal.zsh"},
+        {"col": 7, "row": 0, "label": "NOTES", "script": "scripts/launch/open-notes.zsh"},
+
+        {"col": 0, "row": 1, "label": "CURRENT\nPROJECT", "script": "scripts/projects/open-current-project.zsh"},
+        {"col": 1, "row": 1, "label": "FOCUS\nSESSION", "script": "scripts/workspace/focus-session.zsh"},
+        {"col": 2, "row": 1, "label": "AI\nSTATUS", "script": "scripts/system/ai-status.zsh"},
+        {"col": 3, "row": 1, "label": "RESTART\nAI", "script": "scripts/system/restart-ai.zsh"},
+        {"col": 4, "row": 1, "label": "END\nSESSION", "script": "scripts/workspace/end-session.zsh"},
+        {"col": 5, "row": 1, "label": "Dev\nSpace", "script": "scripts/workspace/development-workspace.zsh"},
+        {"col": 6, "row": 1, "label": "Thinking", "script": "scripts/workspace/thinking-workspace.zsh"},
+        {"col": 7, "row": 1, "label": "RESET", "script": "scripts/workspace/reset-daily-layout.zsh"},
+
+        {"col": 0, "row": 2, "label": "Chrome", "script": "scripts/launch/open-chrome.zsh"},
+        {"col": 1, "row": 2, "label": "Gmail", "script": "scripts/launch/open-gmail.zsh"},
+        {"col": 2, "row": 2, "label": "Drive", "script": "scripts/launch/open-google-drive.zsh"},
+        {"col": 3, "row": 2, "label": "WhatsApp", "script": "scripts/launch/open-whatsapp.zsh"},
+        {"col": 4, "row": 2, "label": "Telegram", "script": "scripts/launch/open-telegram.zsh"},
+        {"col": 5, "row": 2, "label": "Gemini", "script": "scripts/launch/open-gemini.zsh"},
+        {"col": 6, "row": 2, "label": "NotebookLM", "script": "scripts/launch/open-notebooklm.zsh"},
+        {"col": 7, "row": 2, "label": "Desktop\nCommander", "script": "scripts/launch/open-desktop-commander.zsh"},
+
+        {"col": 0, "row": 3, "label": "Start Day", "script": "scripts/spencer/run-layout-shortcut.zsh", "args": ["START_MY_DAY"]},
+        {"col": 1, "row": 3, "label": "Cleanup", "script": "scripts/spencer/run-layout-shortcut.zsh", "args": ["CLEANUP"]},
+        {"col": 2, "row": 3, "label": "Commander", "script": "scripts/spencer/run-layout-shortcut.zsh", "args": ["DESKTOP_COMMANDER"]},
+        {"col": 3, "row": 3, "label": "NL Layout", "script": "scripts/spencer/run-layout-shortcut.zsh", "args": ["NOTEBOOKLM"]},
+        {"col": 4, "row": 3, "label": "Thinking", "script": "scripts/spencer/run-layout-shortcut.zsh", "args": ["THINKING_WORKSPACE"]},
+        {"col": 5, "row": 3, "label": "Fulo Filo", "script": "scripts/spencer/run-layout-shortcut.zsh", "args": ["PRINT_FACTORY_PRINT_Fulo_Filo"]},
+        {"col": 6, "row": 3, "label": "Health", "script": "scripts/system/health-check.zsh"},
+        {"col": 7, "row": 3, "label": "Status", "script": "scripts/system/status-snapshot.zsh"}
+      ]
+    },
+    {
+      "name": "TOOLS",
+      "buttons": [
+        {"col": 0, "row": 0, "label": "AUTOGIO", "script": "scripts/projects/open-project.zsh", "args": ["AI_Engineering_OS"]},
+        {"col": 1, "row": 0, "label": "Finance", "script": "scripts/projects/open-project.zsh", "args": ["financas-2026"]},
+        {"col": 2, "row": 0, "label": "Activity", "script": "scripts/projects/open-project.zsh", "args": ["WorkflowSuggesterPro"]},
+        {"col": 3, "row": 0, "label": "MacHealth", "script": "scripts/projects/open-project.zsh", "args": ["MacHealthOS"]},
+        {"col": 4, "row": 0, "label": "LifeOS", "script": "scripts/projects/open-project.zsh", "args": ["PersonalLifeOS"]},
+        {"col": 5, "row": 0, "label": "StreamDeck", "script": "scripts/projects/open-project.zsh", "args": ["ipad-stream-deck-console"]},
+        {"col": 6, "row": 0, "label": "Hammerspoon", "script": "scripts/projects/open-project.zsh", "args": ["hammerspoon"]},
+        {"col": 7, "row": 0, "label": "Pick", "applescript": "applescript/project-selector.applescript"},
+
+        {"col": 0, "row": 1, "label": "Explain", "script": "scripts/hammerspoon/ai-prompt.zsh", "args": ["explain"]},
+        {"col": 1, "row": 1, "label": "Review", "script": "scripts/hammerspoon/ai-prompt.zsh", "args": ["codex"]},
+        {"col": 2, "row": 1, "label": "Snapshot", "script": "scripts/hammerspoon/ai-prompt.zsh", "args": ["snapshot"]},
+        {"col": 3, "row": 1, "label": "Deliver", "script": "scripts/hammerspoon/ai-prompt.zsh", "args": ["deliver"]},
+        {"col": 4, "row": 1, "label": "Compare", "script": "scripts/hammerspoon/ai-prompt.zsh", "args": ["compare"]},
+        {"col": 5, "row": 1, "label": "Structured", "script": "scripts/hammerspoon/ai-prompt.zsh", "args": ["structured"]},
+        {"col": 6, "row": 1, "label": "Summary", "script": "scripts/hammerspoon/ai-prompt.zsh", "args": ["summary"]},
+        {"col": 7, "row": 1, "label": "Quick", "script": "scripts/hammerspoon/ai-prompt.zsh", "args": ["quick"]},
+
+        {"col": 0, "row": 2, "label": "Research", "script": "scripts/workspace/research-workspace.zsh"},
+        {"col": 1, "row": 2, "label": "Meetings", "script": "scripts/workspace/meetings-workspace.zsh"},
+        {"col": 2, "row": 2, "label": "Finance Ws", "script": "scripts/workspace/finance.zsh"},
+        {"col": 5, "row": 2, "label": "ActivityWatch", "script": "scripts/launch/open-activitywatch.zsh"},
+        {"col": 6, "row": 2, "label": "Clipboard", "guide": "clipboard"},
+        {"col": 7, "row": 2, "label": "HS Guide", "hammerspoon": "open_guide"},
+
+        {"col": 0, "row": 3, "label": "Finder", "script": "scripts/launch/open-finder-home.zsh"},
+        {"col": 1, "row": 3, "label": "Calendar", "script": "scripts/launch/open-app-key.zsh", "args": ["calendar"]},
+        {"col": 2, "row": 3, "label": "Mail", "script": "scripts/launch/open-app-key.zsh", "args": ["mail"]},
+        {"col": 3, "row": 3, "label": "Sound", "path": "/System/Applications/System Settings.app"},
+        {"col": 4, "row": 3, "label": "Reload HS", "hammerspoon": "reload_hammerspoon"},
+        {"col": 5, "row": 3, "label": "Diag", "script": "scripts/system/collect-diagnostics.zsh"},
+        {"col": 6, "row": 3, "label": "Act Mon", "script": "scripts/launch/open-activity-monitor.zsh"},
+        {"col": 7, "row": 3, "label": "Verify", "hammerspoon": "run_verification"}
+      ]
+    }
+  ]
+}

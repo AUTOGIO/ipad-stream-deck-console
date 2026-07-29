@@ -1,0 +1,13 @@
+{
+  "mode": "dual_display",
+  "description": "External ultrawide Command Center plus built-in display",
+  "hammerspoon_layout": "command_center",
+  "windows": [
+    { "app": "ChatGPT Atlas", "zone": "left15" },
+    { "app": "Cursor", "zone": "center42" },
+    { "app": "Ghostty", "zone": "right28", "fallback": "Terminal" },
+    { "app": "Notes", "zone": "right15" },
+    { "app": "Obsidian", "zone": "secondary_upper" },
+    { "app": "Calendar", "zone": "secondary_lower" }
+  ]
+}

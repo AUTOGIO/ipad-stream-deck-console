@@ -1,0 +1,9 @@
+{
+  "mode": "single_builtin",
+  "description": "Built-in display only",
+  "hammerspoon_layout": "coding",
+  "windows": [
+    { "app": "Cursor", "zone": "left50" },
+    { "app": "Ghostty", "zone": "right50", "fallback": "Terminal" }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "mode": "safe_layout",
+  "description": "Fallback when display geometry is unknown",
+  "hammerspoon_layout": "coding",
+  "windows": [
+    { "app": "Cursor", "zone": "left50" },
+    { "app": "ChatGPT Atlas", "zone": "right50" }
+  ],
+  "notify": "Safe layout applied — display geometry could not be determined reliably."
+}

@@ -34,7 +34,7 @@ trap cleanup EXIT
 
 # Process status for key apps
 {
-  for svc in "Stream Deck" "ActivityWatch" "LM Studio" "ollama" "Hammerspoon" "Cursor" "Ghostty"; do
+  for svc in "Stream Deck" "ActivityWatch" "Hammerspoon" "Cursor" "Ghostty"; do
     if sd_process_running "$svc"; then
       print -r -- "${svc}: RUNNING"
     else
@@ -44,9 +44,9 @@ trap cleanup EXIT
 } >"${staging_dir}/system/app_status.txt"
 
 # Project config (no secrets)
-/bin/cp "${root}/config/apps.json" "${staging_dir}/config/" 2>/dev/null || true
-/bin/cp "${root}/config/paths.json" "${staging_dir}/config/" 2>/dev/null || true
-/bin/cp "${root}/STATUS.md" "${staging_dir}/config/" 2>/dev/null || true
+/bin/cp "${SD_ROOT}/config/apps.json" "${staging_dir}/config/"
+/bin/cp "${SD_ROOT}/config/paths.json" "${staging_dir}/config/"
+/bin/cp "${SD_ROOT}/STATUS.md" "${staging_dir}/config/"
 
 # Recent script logs
 if [[ -f "${logs_dir}/ipad-stream-deck-console.log" ]]; then

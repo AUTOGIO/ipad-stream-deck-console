@@ -1,8 +1,8 @@
 {
   "defaults": {
-    "chatgpt": "chatgpt_atlas",
-    "terminal": "ghostty",
-    "claude_code": "cursor_ai_engineering",
+    "chatgpt": "chatgpt",
+    "terminal": "iterm",
+    "claude_code": "claude_desktop",
     "finance_spreadsheet": "excel"
   },
   "apps": {
@@ -26,25 +26,15 @@
       "bundle_id": "com.todesktop.230313mzl4w4u92",
       "path": "/Applications/Cursor.app"
     },
-    "obsidian": {
-      "name": "Obsidian",
-      "bundle_id": "md.obsidian",
-      "path": "/Applications/Obsidian.app"
-    },
-    "lm_studio": {
-      "name": "LM Studio",
-      "bundle_id": "ai.elementlabs.lmstudio",
-      "path": "/Applications/LM Studio.app"
+    "notes": {
+      "name": "Notes",
+      "bundle_id": "com.apple.Notes",
+      "path": "/System/Applications/Notes.app"
     },
     "claude": {
       "name": "Claude",
       "bundle_id": "com.anthropic.claudefordesktop",
       "path": "/Applications/Claude.app"
-    },
-    "codex_monitor": {
-      "name": "Codex Monitor",
-      "bundle_id": "com.dimillian.codexmonitor",
-      "path": "/Applications/Codex Monitor.app"
     },
     "activitywatch": {
       "name": "ActivityWatch",
@@ -95,6 +85,41 @@
       "name": "Finder",
       "bundle_id": "com.apple.finder",
       "path": "/System/Library/CoreServices/Finder.app"
+    },
+    "calendar": {
+      "name": "Calendar",
+      "bundle_id": "com.apple.iCal",
+      "path": "/System/Applications/Calendar.app"
+    },
+    "mail": {
+      "name": "Mail",
+      "bundle_id": "com.apple.mail",
+      "path": "/System/Applications/Mail.app"
+    },
+    "chrome": {
+      "name": "Google Chrome",
+      "bundle_id": "com.google.Chrome",
+      "path": "/Applications/Google Chrome.app"
+    },
+    "gmail": {
+      "name": "Gmail",
+      "bundle_id": "com.apple.Safari.WebApp",
+      "path": "/Applications/Gmail.app"
+    },
+    "whatsapp": {
+      "name": "WhatsApp",
+      "bundle_id": "net.whatsapp.WhatsApp",
+      "path": "/Applications/WhatsApp.app"
+    },
+    "telegram": {
+      "name": "Telegram",
+      "bundle_id": "ru.keepcoder.Telegram",
+      "path": "/Applications/Telegram.app"
+    },
+    "desktop_commander": {
+      "name": "Desktop Commander",
+      "bundle_id": "app.desktopcommander",
+      "path": "/Applications/Desktop Commander.app"
     }
   },
   "claude_code_actions": {
@@ -106,10 +131,6 @@
       "description": "Open Cursor with AI_Engineering_OS project",
       "app_key": "cursor",
       "open_path_key": "ai_engineering_project"
-    },
-    "codex_monitor": {
-      "description": "Open Codex Monitor app",
-      "app_key": "codex_monitor"
     },
     "codex_cli": {
       "description": "Open terminal and run codex CLI",

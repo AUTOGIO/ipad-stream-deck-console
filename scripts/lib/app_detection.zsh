@@ -42,7 +42,9 @@ def resolve(obj, key_path):
 value = resolve(data, query)
 if value is None:
     sys.exit(1)
-if isinstance(value, (dict, list)):
+if isinstance(value, bool):
+    print("true" if value else "false")
+elif isinstance(value, (dict, list)):
     print(json.dumps(value))
 else:
     print(value)
@@ -65,7 +67,16 @@ sd_load_app() {
 }
 
 sd_load_path() {
+  # Prefer config.json paths.* (canonical) when available; fall back to paths.json.
   local paths_json="$1"
   local path_key="$2"
+  local from_config=""
+  if [[ -n "${SD_CONFIG_JSON:-}" && -f "${SD_CONFIG_JSON}" ]]; then
+    from_config="$(sd_json_get "$SD_CONFIG_JSON" "paths.${path_key}" 2>/dev/null || true)"
+    if [[ -n "$from_config" ]]; then
+      print -r -- "$from_config"
+      return 0
+    fi
+  fi
   sd_json_get "$paths_json" "$path_key"
 }

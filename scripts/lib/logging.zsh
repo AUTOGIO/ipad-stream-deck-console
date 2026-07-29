@@ -6,7 +6,12 @@ typeset -g SD_LOG_FILE=""
 
 sd_init_logging() {
   local project_root="$1"
-  SD_LOG_DIR="${project_root}/logs"
+  local autogio_logs="${HOME}/Library/Logs/AUTOGIO/StreamDeck"
+  if [[ -d "$autogio_logs" || -d "${HOME}/Library/Logs/AUTOGIO" ]]; then
+    SD_LOG_DIR="$autogio_logs"
+  else
+    SD_LOG_DIR="${project_root}/logs"
+  fi
   /bin/mkdir -p "$SD_LOG_DIR"
   SD_LOG_FILE="${SD_LOG_DIR}/ipad-stream-deck-console.log"
 }

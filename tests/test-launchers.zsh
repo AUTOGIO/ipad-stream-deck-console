@@ -11,13 +11,13 @@ sd_init_logging "$ROOT"
 
 scripts=(
   "scripts/launch/open-cursor.zsh"
-  "scripts/launch/open-lm-studio.zsh"
+  "scripts/launch/open-codex.zsh"
   "scripts/launch/open-activitywatch.zsh"
   "scripts/launch/open-finder-home.zsh"
   "scripts/launch/open-github-projects.zsh"
   "scripts/launch/open-chatgpt.zsh"
   "scripts/launch/open-claude-code.zsh"
-  "scripts/launch/open-obsidian-ai.zsh"
+  "scripts/launch/open-notes.zsh"
   "scripts/launch/open-terminal.zsh"
   "scripts/launch/open-activity-monitor.zsh"
 )

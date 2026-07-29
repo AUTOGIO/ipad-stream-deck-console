@@ -11,16 +11,16 @@ script="${ROOT}/scripts/system/health-check.zsh"
 /bin/chmod +x "$script"
 zsh "$script"
 
-reports=( "${ROOT}"/reports/health-check_*.txt(N) )
-if (( ${#reports[@]} == 0 )); then
+# Prefer newest report by modification time (not alphabetical glob order).
+latest="$(/bin/ls -t "${ROOT}"/reports/health-check_*.txt 2>/dev/null | /usr/bin/head -n 1 || true)"
+if [[ -z "$latest" || ! -f "$latest" ]]; then
   print -r -- "FAIL  No health check report created" >&2
   exit 1
 fi
-latest="${reports[1]}"
 
 for marker in "macOS" "Disk Usage" "Service Status" "Network Reachability"; do
   if ! /usr/bin/grep -q "$marker" "$latest"; then
-    print -r -- "FAIL  Missing section: ${marker}" >&2
+    print -r -- "FAIL  Missing section: ${marker} in ${latest}" >&2
     exit 1
   fi
 done

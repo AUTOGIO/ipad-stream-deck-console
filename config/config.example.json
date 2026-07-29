@@ -1,0 +1,197 @@
+{
+  "_readme": "Copy to config/config.json and replace YOUR_USERNAME (and project paths) for this Mac. config.json may stay local; this example is the cloneable template.",
+  "version": 1,
+  "active_project": "/Users/YOUR_USERNAME/Documents/GitHub/AI_Engineering_OS",
+  "projects": {
+    "AI_Engineering_OS": "/Users/YOUR_USERNAME/Documents/GitHub/AI_Engineering_OS",
+    "financas-2026": "/Users/YOUR_USERNAME/Documents/financas-2026",
+    "MacHealthOS": "/Users/YOUR_USERNAME/Documents/GitHub/MacHealthOS",
+    "PersonalLifeOS": "/Users/YOUR_USERNAME/Documents/GitHub/PersonalLifeOS",
+    "WorkflowSuggesterPro": "/Users/YOUR_USERNAME/Documents/GitHub/WorkflowSuggesterPro",
+    "ipad-stream-deck-console": "/Users/YOUR_USERNAME/Documents/GitHub/ipad-stream-deck-console",
+    "hammerspoon": "/Users/YOUR_USERNAME/.hammerspoon"
+  },
+  "project_layouts": {
+    "AI_Engineering_OS": "command_center",
+    "financas-2026": "writing",
+    "MacHealthOS": "coding",
+    "PersonalLifeOS": "writing",
+    "WorkflowSuggesterPro": "coding",
+    "ipad-stream-deck-console": "dev_console",
+    "hammerspoon": "dev_console"
+  },
+  "paths": {
+    "home": "/Users/YOUR_USERNAME",
+    "projects_root": "/Users/YOUR_USERNAME/Documents/GitHub",
+    "health_check_script": "/Users/YOUR_USERNAME/Documents/GitHub/ipad-stream-deck-console/scripts/system/health-check.zsh",
+    "health_reports": "/Users/YOUR_USERNAME/Documents/GitHub/ipad-stream-deck-console/reports",
+    "hammerspoon_config": "/Users/YOUR_USERNAME/.hammerspoon",
+    "logs_dir": "/Users/YOUR_USERNAME/Library/Logs/AUTOGIO/StreamDeck",
+    "reports_dir": "/Users/YOUR_USERNAME/Documents/GitHub/ipad-stream-deck-console/reports",
+    "runtime_dir": "/Users/YOUR_USERNAME/Library/Application Support/AUTOGIO/streamdeck",
+    "codex_cli": "/opt/homebrew/bin/codex",
+    "stream_deck_app": "/Applications/Elgato Stream Deck.app"
+  },
+  "applications": {
+    "chatgpt": {
+      "name": "ChatGPT",
+      "bundle_id": "com.openai.codex",
+      "path": "/Applications/ChatGPT.app"
+    },
+    "chatgpt_atlas": {
+      "name": "ChatGPT Atlas",
+      "bundle_id": "com.openai.atlas",
+      "path": "/Applications/ChatGPT Atlas.app"
+    },
+    "cursor": {
+      "name": "Cursor",
+      "bundle_id": "com.todesktop.230313mzl4w4u92",
+      "path": "/Applications/Cursor.app"
+    },
+    "notes": {
+      "name": "Notes",
+      "bundle_id": "com.apple.Notes",
+      "path": "/System/Applications/Notes.app"
+    },
+    "activitywatch": {
+      "name": "ActivityWatch",
+      "bundle_id": "net.activitywatch.ActivityWatch",
+      "path": "/Applications/ActivityWatch.app"
+    },
+    "activity_monitor": {
+      "name": "Activity Monitor",
+      "bundle_id": "com.apple.ActivityMonitor",
+      "path": "/System/Applications/Utilities/Activity Monitor.app"
+    },
+    "ghostty": {
+      "name": "Ghostty",
+      "bundle_id": "com.mitchellh.ghostty",
+      "path": "/Applications/Ghostty.app"
+    },
+    "terminal": {
+      "name": "Terminal",
+      "bundle_id": "com.apple.Terminal",
+      "path": "/System/Applications/Utilities/Terminal.app"
+    },
+    "calendar": {
+      "name": "Calendar",
+      "bundle_id": "com.apple.iCal",
+      "path": "/System/Applications/Calendar.app"
+    },
+    "mail": {
+      "name": "Mail",
+      "bundle_id": "com.apple.mail",
+      "path": "/System/Applications/Mail.app"
+    },
+    "stream_deck": {
+      "name": "Elgato Stream Deck",
+      "bundle_id": "com.elgato.StreamDeck",
+      "path": "/Applications/Elgato Stream Deck.app"
+    }
+  },
+  "defaults": {
+    "chatgpt": "chatgpt",
+    "terminal": "iterm",
+    "claude_code": "claude_desktop"
+  },
+  "features": {
+    "use_window_mover": false,
+    "use_hammerspoon": true,
+    "enable_home_assistant": false
+  },
+  "startup": {
+    "stream_deck_at_login": true,
+    "start_my_day_automatically": false,
+    "startup_delay_seconds": 5
+  },
+  "start_my_day": {
+    "enabled": true,
+    "open_cursor": true,
+    "open_chatgpt_atlas": true,
+    "open_ghostty": true,
+    "open_notes": true,
+    "maximum_primary_apps": 4,
+    "hammerspoon_layout": "command_center"
+  },
+  "layouts": {
+    "preferred": "auto",
+    "dual_display": {
+      "enabled": true,
+      "hammerspoon_layout": "command_center"
+    },
+    "single_external": {
+      "enabled": true,
+      "hammerspoon_layout": "command_center"
+    },
+    "single_builtin": {
+      "enabled": true,
+      "hammerspoon_layout": "coding"
+    },
+    "safe_layout": {
+      "enabled": true,
+      "hammerspoon_layout": "coding"
+    }
+  },
+  "workspace_apps": [
+    "Cursor",
+    "ChatGPT",
+    "Claude",
+    "ChatGPT Atlas",
+    "Ghostty",
+    "Notes"
+  ],
+  "current_project": {
+    "open_finder": true,
+    "open_terminal": true,
+    "editor": "cursor"
+  },
+  "focus": {
+    "profile_name": "Work",
+    "durations_minutes": [
+      25,
+      50,
+      90
+    ],
+    "default_duration_minutes": 50,
+    "hide_apps": [
+      "Music",
+      "TV",
+      "Discord",
+      "WhatsApp",
+      "Messages",
+      "Telegram"
+    ]
+  },
+  "session": {
+    "log_path": "/Users/YOUR_USERNAME/Reports/WorkSessions/Daily Operations Log.md",
+    "quit_work_apps": [
+      "Cursor",
+      "ChatGPT Atlas",
+      "Ghostty",
+      "Notes"
+    ],
+    "quit_apps": true
+  },
+  "ai": {
+    "required": {
+      "internet": true,
+      "chatgpt": true,
+      "claude": true,
+      "cursor": true,
+      "stream_deck": false,
+      "hammerspoon": false
+    },
+    "check_apps": [
+      "chatgpt",
+      "chatgpt_atlas",
+      "claude",
+      "cursor",
+      "ghostty"
+    ],
+    "restart_apps": [
+      "chatgpt",
+      "chatgpt_atlas",
+      "claude"
+    ]
+  }
+}

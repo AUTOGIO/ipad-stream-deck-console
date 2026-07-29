@@ -34,11 +34,11 @@ report_file="${reports_dir}/health-check_${timestamp}.txt"
   print -r -- ""
 
   print -r -- "## Top CPU Processes"
-  /usr/bin/ps -Ao pid,pcpu,comm -r 2>/dev/null | /usr/bin/head -8 || true
+  /bin/ps -Ao pid,pcpu,comm -r 2>/dev/null | /usr/bin/head -8 || true
   print -r -- ""
 
   print -r -- "## Top Memory Processes"
-  /usr/bin/ps -Ao pid,pmem,comm -m 2>/dev/null | /usr/bin/head -8 || true
+  /bin/ps -Ao pid,pmem,comm -m 2>/dev/null | /usr/bin/head -8 || true
   print -r -- ""
 
   print -r -- "## Failed User LaunchAgents"
@@ -64,7 +64,7 @@ report_file="${reports_dir}/health-check_${timestamp}.txt"
   print -r -- ""
 
   print -r -- "## Service Status"
-  for svc in "Stream Deck:Stream Deck" "ActivityWatch:ActivityWatch" "LM Studio:LM Studio" "Ollama:ollama" "Hammerspoon:Hammerspoon"; do
+  for svc in "Stream Deck:Stream Deck" "ActivityWatch:ActivityWatch" "Hammerspoon:Hammerspoon"; do
     label="${svc%%:*}"
     pattern="${svc##*:}"
     if sd_process_running "$pattern"; then

@@ -1,5 +1,5 @@
 #!/bin/zsh
-# tests/validate-config.zsh — validate apps.json and paths.json against this Mac
+# tests/validate-config.zsh — validate config.json, apps.json, and paths.json
 
 set -euo pipefail
 export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
@@ -9,6 +9,7 @@ source "${ROOT}/scripts/lib/common.zsh"
 
 sd_init_logging "$ROOT"
 
+CONFIG_JSON="${ROOT}/config/config.json"
 APPS_JSON="${ROOT}/config/apps.json"
 PATHS_JSON="${ROOT}/config/paths.json"
 
@@ -34,11 +35,39 @@ warn() {
   warnings=$((warnings + 1))
 }
 
+sd_require_file "config.json" "$CONFIG_JSON" || exit 2
 sd_require_file "apps.json" "$APPS_JSON" || exit 2
 sd_require_file "paths.json" "$PATHS_JSON" || exit 2
 
 print -r -- "Validating ipad-stream-deck-console configuration"
 print -r -- "Project root: ${ROOT}"
+
+print -r -- "--- config.json ---"
+for key in version active_project; do
+  value="$(sd_json_get "$CONFIG_JSON" "$key" 2>/dev/null || true)"
+  if [[ -n "$value" ]]; then
+    pass "config.${key} = ${value}"
+  else
+    fail "config.${key} missing"
+  fi
+done
+
+for section in startup start_my_day layouts features; do
+  if sd_json_get "$CONFIG_JSON" "$section" >/dev/null 2>&1; then
+    pass "config.${section} present"
+  else
+    fail "config.${section} missing"
+  fi
+done
+
+for layout in dual-display.json single-external.json single-builtin.json safe-layout.json; do
+  if [[ -f "${ROOT}/layouts/${layout}" ]]; then
+    pass "layouts/${layout}"
+  else
+    fail "layouts/${layout} missing"
+  fi
+done
+
 print -r -- "--- Apps ---"
 
 app_keys=("${(@f)$(/usr/bin/python3 - "$APPS_JSON" <<'PY'
@@ -65,6 +94,40 @@ for key in "${app_keys[@]}"; do
   fi
 done
 
+print -r -- "--- Profile sources ---"
+if [[ -f "${ROOT}/config/profiles-ipad-work.json" ]]; then
+  pass "config/profiles-ipad-work.json"
+else
+  fail "config/profiles-ipad-work.json missing"
+fi
+if [[ -f "${ROOT}/config/profiles-ipad.json" ]]; then
+  pass "config/profiles-ipad.json"
+else
+  warn "config/profiles-ipad.json missing (legacy 8x8 design; Work Console uses profiles-ipad-work.json)"
+fi
+
+print -r -- "--- Session ops scripts ---"
+for script in \
+  scripts/projects/open-current-project.zsh \
+  scripts/projects/set-current-project.zsh \
+  scripts/workspace/focus-session.zsh \
+  scripts/workspace/end-session.zsh \
+  scripts/system/ai-status.zsh \
+  scripts/system/restart-ai.zsh \
+  scripts/launch/open-chrome.zsh \
+  scripts/launch/open-gmail.zsh \
+  scripts/launch/open-google-drive.zsh \
+  scripts/launch/open-whatsapp.zsh \
+  scripts/launch/open-telegram.zsh \
+  scripts/launch/open-notebooklm.zsh \
+  scripts/launch/open-desktop-commander.zsh; do
+  if [[ -x "${ROOT}/${script}" ]]; then
+    pass "${script}"
+  else
+    fail "${script} missing or not executable"
+  fi
+done
+
 print -r -- "--- Paths ---"
 
 path_keys=("${(@f)$(/usr/bin/python3 - "$PATHS_JSON" <<'PY'
@@ -84,7 +147,7 @@ for key in "${path_keys[@]}"; do
   fi
 
   case "$key" in
-    codex_cli|ollama_cli)
+    codex_cli)
       if [[ -x "$value" ]]; then
         pass "paths.${key}"
       else
@@ -95,13 +158,6 @@ for key in "${path_keys[@]}"; do
       /bin/mkdir -p "$value"
       pass "paths.${key}"
       ;;
-    obsidian_ai_vault_name)
-      if [[ -n "$value" ]]; then
-        pass "paths.${key} (label)"
-      else
-        fail "paths.${key} is empty"
-      fi
-      ;;
     *)
       if [[ -e "$value" ]]; then
         pass "paths.${key}"
@@ -110,6 +166,25 @@ for key in "${path_keys[@]}"; do
       fi
       ;;
   esac
+done
+
+print -r -- "--- Scripts (MVP) ---"
+for script in \
+  scripts/workspace/start-my-day.zsh \
+  scripts/workspace/reset-daily-layout.zsh \
+  scripts/workspace/development-workspace.zsh \
+  scripts/system/detect-displays.zsh \
+  scripts/system/select-layout.zsh \
+  scripts/system/ensure-streamdeck-running.zsh \
+  scripts/stream-deck/configure-streamdeck-login.zsh \
+  scripts/stream-deck/remove-streamdeck-login.zsh \
+  scripts/launch/open-codex.zsh \
+  scripts/launch/open-chatgpt-atlas.zsh; do
+  if [[ -x "${ROOT}/${script}" ]]; then
+    pass "${script}"
+  else
+    fail "${script} missing or not executable"
+  fi
 done
 
 print -r -- "--- Defaults ---"

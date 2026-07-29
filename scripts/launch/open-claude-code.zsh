@@ -16,9 +16,6 @@ case "$action_key" in
     IFS='|' read -r _ _ cursor_path <<<"$cursor_info"
     sd_open_in_cursor "$project_path" "$cursor_path"
     ;;
-  codex_monitor)
-    sd_launch_configured_app "$SD_APPS_JSON" "codex_monitor"
-    ;;
   codex_cli)
     terminal_key="$(sd_get_default_key "$SD_APPS_JSON" "terminal")"
     sd_launch_configured_app "$SD_APPS_JSON" "$terminal_key"

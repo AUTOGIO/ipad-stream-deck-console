@@ -8,5 +8,8 @@ backups/*
 *.zip
 *.tar.gz
 .superpowers/
+.cursor/
+.memory/
 stream-deck/profiles/*.streamDeckProfile
 stream-deck/generated/
+stream-deck/generated copy/
