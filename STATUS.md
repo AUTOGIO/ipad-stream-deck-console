@@ -10,7 +10,7 @@ Last updated: 2026-07-29 (audit remediation)
 - **Project directory:** `~/Documents/GitHub/ipad-stream-deck-console`
 - **Runtime:** `~/Library/Application Support/AUTOGIO/streamdeck/`
 - **Logs:** `~/Library/Logs/AUTOGIO/StreamDeck/`
-- **Git remote:** **None configured yet** — add a private `origin` when ready (do not push `backups/` or secrets)
+- **Git remote:** `origin` → https://github.com/AUTOGIO/ipad-stream-deck-console (private)
 
 ## LLM policy
 
@@ -48,8 +48,6 @@ For the 3840×1080 AG493QS4R4, Command Center is the default work layout:
 1. In Stream Deck macOS → Profiles → **Stream Deck Mobile** → select **iPad Work Console**.
 2. On iPad: confirm pages **WORK** and **TOOLS** are visible.
 3. Spot-check: START MY DAY, NOTES, FOCUS SESSION, RESET, and CURRENT PROJECT.
-4. When ready: add a private Git remote for offsite backup of this repo.
-
 ## Next Recommended Action
 
 Select **iPad Work Console** on Mobile and verify the four-panel Command Center on the ultrawide.

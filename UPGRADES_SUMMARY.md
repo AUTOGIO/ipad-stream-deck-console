@@ -64,7 +64,7 @@ The console is **operationally stabilized**: config validation passes, diagnosti
 | AUDIT-007 | Closed (directory removed) |
 | AUDIT-008 | Closed (slim backup + prune) |
 | AUDIT-009 | Closed |
-| AUDIT-010 | Open — needs remote URL from you |
+| AUDIT-010 | Closed — private `origin` at AUTOGIO/ipad-stream-deck-console |
 | AUDIT-011 | Closed |
 | AUDIT-012 | Closed (Reports-only) |
 | AUDIT-013 | Partially closed (docs freeze primary surface; Spencer deferred) |
