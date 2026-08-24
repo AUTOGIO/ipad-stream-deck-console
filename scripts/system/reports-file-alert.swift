@@ -1,33 +1,15 @@
 import CoreServices
 import Foundation
 
-// Narrow watcher: personal Reports tree only (not ~/Documents).
+// Narrow watcher: ~/Reports + GitHub trees, but notify only for final reports or .log files.
 let home = FileManager.default.homeDirectoryForCurrentUser
 let watchedRoots = [
     home.appendingPathComponent("Reports", isDirectory: true),
+    home.appendingPathComponent("Documents/GitHub", isDirectory: true),
 ]
 let ignoredNames: Set<String> = [".DS_Store"]
-let notificationDebounce: TimeInterval = 1.0
-
-func existingFiles(at roots: [URL]) -> Set<String> {
-    var paths = Set<String>()
-    for root in roots {
-        guard let enumerator = FileManager.default.enumerator(
-            at: root,
-            includingPropertiesForKeys: [.isRegularFileKey],
-            options: [.skipsHiddenFiles]
-        ) else {
-            continue
-        }
-        for case let url as URL in enumerator {
-            guard (try? url.resourceValues(forKeys: [.isRegularFileKey]).isRegularFile) == true else {
-                continue
-            }
-            paths.insert(url.path)
-        }
-    }
-    return paths
-}
+let reportDebounce: TimeInterval = 1.0
+let logDebounce: TimeInterval = 300.0
 
 func appleScriptLiteral(_ value: String) -> String {
     let escaped = value
@@ -35,6 +17,24 @@ func appleScriptLiteral(_ value: String) -> String {
         .replacingOccurrences(of: "\"", with: "\\\"")
         .replacingOccurrences(of: "\n", with: " ")
     return "\"\(escaped)\""
+}
+
+func isGitInternal(_ path: String) -> Bool {
+    path.lowercased().contains("/.git/")
+}
+
+/// Only final reports (name contains both "final" and "report") or .log files.
+func isAlertableFile(_ path: String) -> Bool {
+    if isGitInternal(path) { return false }
+    let name = URL(fileURLWithPath: path).lastPathComponent.lowercased()
+    if ignoredNames.contains(name) { return false }
+    if name.hasSuffix(".log") { return true }
+    return name.contains("final") && name.contains("report")
+}
+
+func debounceInterval(for path: String) -> TimeInterval {
+    let name = URL(fileURLWithPath: path).lastPathComponent.lowercased()
+    return name.hasSuffix(".log") ? logDebounce : reportDebounce
 }
 
 func notifyReportChange(_ path: String, title: String) {
@@ -58,10 +58,9 @@ let callback: FSEventStreamCallback = { _, info, eventCount, eventPaths, eventFl
     for index in 0..<Int(eventCount) {
         let flags = eventFlags[index]
         let path = paths[index]
-        let url = URL(fileURLWithPath: path)
 
         guard flags & UInt32(kFSEventStreamEventFlagItemIsFile) != 0 else { continue }
-        guard !ignoredNames.contains(url.lastPathComponent) else { continue }
+        guard isAlertableFile(path) else { continue }
 
         let isNewFile = flags & UInt32(kFSEventStreamEventFlagItemCreated) != 0
         let isContentChange = flags & UInt32(kFSEventStreamEventFlagItemModified) != 0
@@ -79,18 +78,14 @@ let callback: FSEventStreamCallback = { _, info, eventCount, eventPaths, eventFl
 }
 
 final class ReportsWatcher {
-    var knownFiles: Set<String>
+    var knownFiles: Set<String> = []
     private var lastNotification: [String: Date] = [:]
-
-    init(knownFiles: Set<String>) {
-        self.knownFiles = knownFiles
-    }
 
     func shouldNotify(path: String) -> Bool {
         let now = Date()
         defer { lastNotification[path] = now }
         guard let last = lastNotification[path] else { return true }
-        return now.timeIntervalSince(last) >= notificationDebounce
+        return now.timeIntervalSince(last) >= debounceInterval(for: path)
     }
 }
 
@@ -101,7 +96,7 @@ for root in watchedRoots {
     }
 }
 
-let watcher = ReportsWatcher(knownFiles: existingFiles(at: watchedRoots))
+let watcher = ReportsWatcher()
 let context = UnsafeMutableRawPointer(Unmanaged.passUnretained(watcher).toOpaque())
 var streamContext = FSEventStreamContext(
     version: 0,
@@ -124,6 +119,7 @@ guard let stream = FSEventStreamCreate(
     exit(1)
 }
 
+FileHandle.standardOutput.write("ReportsFileAlert started (final reports + .log only)\n".data(using: .utf8)!)
 FSEventStreamSetDispatchQueue(stream, DispatchQueue.main)
 FSEventStreamStart(stream)
 dispatchMain()
